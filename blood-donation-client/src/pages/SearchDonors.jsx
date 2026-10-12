@@ -43,7 +43,7 @@ const SearchDonors = () => {
         setSearched(true);
 
         // ব্যাকএন্ডে ডোনর ফিল্টার করার জন্য কুয়েরি পাঠানো (অথবা ইউজার কালেকশন থেকে রোল ও লোকেশন ম্যাচ করা)
-        axios.get(`http://localhost:5000/users?bloodGroup=${bloodGroup}&district=${district}&upazila=${upazila}`)
+        axios.get(`${import.meta.env.VITE_API_URL}/users?bloodGroup=${bloodGroup}&district=${district}&upazila=${upazila}`)
             .then(res => {
                 // শুধু ডোনর রোল বা সক্রিয় ইউজারদের ফিল্টার করা
                 const filteredDonors = res.data.filter(u => u.role === 'donor' && u.status === 'active');

@@ -28,7 +28,7 @@ const CheckoutForm = ({ closeModal, refetchFunds }) => {
         setProcessing(true);
         try {
             // ব্যাকএন্ড থেকে পেমেন্ট ইন্টেন্ট ক্লায়েন্ট সিক্রেট আনা
-            const res = await axios.post("http://localhost:5000/create-payment-intent", { amount: parseFloat(amount) }, {
+            const res = await axios.post("${import.meta.env.VITE_API_URL}/create-payment-intent", { amount: parseFloat(amount) }, {
                 headers: { authorization: `Bearer ${token}` }
             });
             const clientSecret = res.data.clientSecret;
@@ -58,7 +58,7 @@ const CheckoutForm = ({ closeModal, refetchFunds }) => {
                     date: new Date().toISOString()
                 };
 
-                await axios.post("http://localhost:5000/fundings", fundingInfo, {
+                await axios.post("${import.meta.env.VITE_API_URL}/fundings", fundingInfo, {
                     headers: { authorization: `Bearer ${token}` }
                 });
 
@@ -105,7 +105,7 @@ const Funding = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const fetchFunds = () => {
-        axios.get("http://localhost:5000/fundings")
+        axios.get("${import.meta.env.VITE_API_URL}/fundings")
             .then(res => setFundings(res.data))
             .catch(err => console.log(err));
     };

@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             if (currentUser?.email) {
                 // User login korle ba page reload korle token generate kore localStorage-e rakha
-                axios.post('http://localhost:5000/jwt', { email: currentUser.email })
+                axios.post('${import.meta.env.VITE_API_URL}/jwt', { email: currentUser.email })
                     .then(res => {
                         if (res.data.token) {
                             localStorage.setItem('access-token', res.data.token);

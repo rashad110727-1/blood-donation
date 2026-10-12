@@ -54,7 +54,7 @@ const Register = () => {
                 };
 
                 // ৬. ব্যাকএন্ডে ডেটা পাঠানো (ধরে নিচ্ছি আপনার ব্যাকএন্ড লোকালহোস্ট ৫০০০ পোর্টে চলছে)
-                const dbResponse = await axios.post("http://localhost:5000/users", userInfo);
+                const dbResponse = await axios.post("${import.meta.env.VITE_API_URL}/users", userInfo);
 
                 if (dbResponse.data.insertedId) {
                     reset();

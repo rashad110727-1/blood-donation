@@ -7,7 +7,7 @@ const AllUsers = () => {
     const [loading, setLoading] = useState(true);
 
     const fetchUsers = () => {
-        axios.get("http://localhost:5000/users", {
+        axios.get("${import.meta.env.VITE_API_URL}/users", {
             headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` }
         })
         .then(res => {
@@ -26,7 +26,7 @@ const AllUsers = () => {
 
     // রোল পরিবর্তন করার ফাংশন
     const handleRoleChange = (id, newRole) => {
-        axios.patch(`http://localhost:5000/users/admin/${id}`, { role: newRole }, {
+        axios.patch(`${import.meta.env.VITE_API_URL}/users/admin/${id}`, { role: newRole }, {
             headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` }
         })
         .then(res => {
@@ -41,7 +41,7 @@ const AllUsers = () => {
     // স্ট্যাটাস ব্লক বা অ্যাক্টিভ করার ফাংশন
     const handleStatusChange = (id, currentStatus) => {
         const newStatus = currentStatus === 'active' ? 'blocked' : 'active';
-        axios.patch(`http://localhost:5000/users/status/${id}`, { status: newStatus }, {
+        axios.patch(`${import.meta.env.VITE_API_URL}/users/status/${id}`, { status: newStatus }, {
             headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` }
         })
         .then(res => {

@@ -14,11 +14,11 @@ const DashboardHome = () => {
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const usersRes = await axios.get("http://localhost:5000/users", {
+                const usersRes = await axios.get("${import.meta.env.VITE_API_URL}/users", {
                     headers: { authorization: `Bearer ${localStorage.getItem('access-token')}` }
                 });
-                const requestsRes = await axios.get("http://localhost:5000/donation-requests");
-                const fundingRes = await axios.get("http://localhost:5000/fundings");
+                const requestsRes = await axios.get("${import.meta.env.VITE_API_URL}/donation-requests");
+                const fundingRes = await axios.get("${import.meta.env.VITE_API_URL}/fundings");
 
                 const totalFundAmount = fundingRes.data.reduce((sum, item) => sum + item.amount, 0);
 

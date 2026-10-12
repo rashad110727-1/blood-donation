@@ -8,7 +8,7 @@ const PublicDonationRequests = () => {
 
     useEffect(() => {
         // ব্যাকএন্ড থেকে শুধুমাত্র pending স্ট্যাটাসের রিকোয়েস্ট ফেচ করা
-        axios.get("http://localhost:5000/donation-requests?status=pending")
+        axios.get("${import.meta.env.VITE_API_URL}/donation-requests?status=pending")
             .then(res => {
                 setRequests(res.data);
                 setLoading(false);

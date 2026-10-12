@@ -9,7 +9,7 @@ const MyDonationRequests = () => {
 
     const fetchMyRequests = () => {
         if (user?.email) {
-            axios.get(`http://localhost:5000/donation-requests?email=${user.email}`)
+            axios.get(`${import.meta.env.VITE_API_URL}/donation-requests?email=${user.email}`)
                 .then(res => {
                     setMyRequests(res.data);
                 })
@@ -34,7 +34,7 @@ const MyDonationRequests = () => {
             if (result.isConfirmed) {
                 // টোকেনসহ ডিলিট রিকোয়েস্ট পাঠানোর জন্য নিচের মতো হেডার যুক্ত করা যেতে পারে
                 const token = localStorage.getItem('access-token');
-                axios.delete(`http://localhost:5000/donation-requests/${id}`, {
+                axios.delete(`${import.meta.env.VITE_API_URL}/donation-requests/${id}`, {
                     headers: {
                         authorization: `Bearer ${token}`
                     }

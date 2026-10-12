@@ -7,7 +7,7 @@ const AllDonationRequests = () => {
 
     // ডেটা লোড করার ফাংশন
     const fetchRequests = () => {
-        axios.get("http://localhost:5000/donation-requests")
+        axios.get("${import.meta.env.VITE_API_URL}/donation-requests")
             .then(res => {
                 setAllRequests(res.data);
             })
@@ -20,7 +20,7 @@ const AllDonationRequests = () => {
 
     // স্ট্যাটাস আপডেট করার ফাংশন
     const handleStatusUpdate = (id, newStatus) => {
-        axios.patch(`http://localhost:5000/donation-requests/${id}`, { status: newStatus })
+        axios.patch(`${import.meta.env.VITE_API_URL}/donation-requests/${id}`, { status: newStatus })
             .then(res => {
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({
@@ -47,7 +47,7 @@ const AllDonationRequests = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/donation-requests/${id}`)
+                axios.delete(`${import.meta.env.VITE_API_URL}/donation-requests/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({

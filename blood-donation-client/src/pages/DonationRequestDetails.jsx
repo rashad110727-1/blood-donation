@@ -13,7 +13,7 @@ const DonationRequestDetails = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/donation-requests`)
+        axios.get(`${import.meta.env.VITE_API_URL}/donation-requests`)
             .then(res => {
                 const found = res.data.find(item => item._id === id);
                 setRequest(found);
@@ -35,7 +35,7 @@ const DonationRequestDetails = () => {
             donorEmail: user?.email
         };
 
-        axios.patch(`http://localhost:5000/donation-requests/${id}`, donationData)
+        axios.patch(`${import.meta.env.VITE_API_URL}/donation-requests/${id}`, donationData)
             .then(res => {
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({

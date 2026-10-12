@@ -18,7 +18,7 @@ const CreateDonationRequest = () => {
 
         try {
             // Backend-e axios diye POST request pathano hocche
-            const res = await axios.post('http://localhost:5000/donation-requests', requestData);
+            const res = await axios.post('${import.meta.env.VITE_API_URL}/donation-requests', requestData);
             
             if (res.data.insertedId) {
                 Swal.fire({
