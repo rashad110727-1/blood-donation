@@ -1,0 +1,32 @@
+{
+  "name": "blood-donation-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@tanstack/react-query": "^5.103.2",
+    "axios": "^1.20.0",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^7.6.0",
+    "react-hook-form": "^7.88.0",
+    "react-router-dom": "^7.18.4",
+    "stripe": "^22.6.2",
+    "sweetalert2": "^11.26.25"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.6.1",
+    "daisyui": "^5.7.45",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^4.3.3"
+  }
+}
